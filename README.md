@@ -72,3 +72,41 @@ class Program
         Console.WriteLine(p1.Address.City); // Output: New York (unchanged!)
     }
 }
+
+
+
+K most frequency Integer value
+------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class KMostFrequentElements
+{
+    public static List<int> FindKMostFrequentElements(int[] nums, int k)
+    {
+        var frequencyMap = new Dictionary<int, int>();
+        
+        // Count frequency
+        foreach (var num in nums)
+            frequencyMap[num] = frequencyMap.GetValueOrDefault(num, 0) + 1;
+
+        // Sort by frequency & take top k elements
+        return frequencyMap.OrderByDescending(x => x.Value)
+                           .Take(k)
+                           .Select(x => x.Key)
+                           .ToList();
+    }
+
+    static void Main()
+    {
+        int[] nums = { 1, 1, 1, 2, 2, 3 };
+        int k = 2;
+        var result = FindKMostFrequentElements(nums, k);
+        Console.WriteLine(string.Join(", ", result));
+    }
+}
+
+
+
