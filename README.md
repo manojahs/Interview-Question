@@ -5,7 +5,7 @@ Shallow Copy
 
 A shallow copy creates a new object, but it only copies references for reference-type fields instead of duplicating them. This means that if the original object has a reference to another object, both the original and copied objects will point to the same reference.
 
- // class Person
+ class Person
 {
     public string Name { get; set; }
     public Address Address { get; set; }  // Reference type
